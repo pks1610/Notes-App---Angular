@@ -1,0 +1,60 @@
+<div class="row mainDiv">
+    <div class="col-lg-3 col-md-4 col-sm-12 sidebar">
+        <h1>Notes</h1>
+        <div class="notesDiv" *ngFor="let note of savedNotesList | filter: searchText">
+            <div (click)="selectedNote(note)">
+                <h2>{{ note.title }}</h2>
+                <p><span class="grayTxt">{{ note.date | date:'h:mm a' }}</span> {{ (note.notes.length>6)? (note.notes | slice:0:6)+'..':(note.notes) }}</p>
+            </div>
+        </div>
+    </div>
+    <div class=" col-lg-9 col-md-8 col-sm-12">
+        <div class="row">
+            <div class="col-md-8 col-sm-12 search-hero">
+                <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for a notes">
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <button class="btnPos" (click)="open(mymodal)">Add New Notes</button>
+                <button class="btnPos" (click)="delete()">Delete</button>
+            </div>
+        </div>
+        <div class="row display">
+            <div class="col-md-12">
+                <span class="grayTxt">{{ selDate | date:'short':'IST'}}</span>
+                <h1>{{ selTitle }}</h1>
+                <p>{{ selNote }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #mymodal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add Notes</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <form #notesForm="ngForm" (ngSubmit)="formSubmit(notesForm)">
+        <div class="modal-body">
+            <label>
+              Title:
+              <input type="text" name="title" ngModel required #title="ngModel">
+            </label>
+            <br>
+            <label>
+              Notes:
+              <textarea name="note" ngModel required #note="ngModel"></textarea>
+              <!-- <input type="text" formControlName="notes"> -->
+            </label> 
+        </div>
+        <div class="modal-footer">
+        <button class="btn btn-outline-dark" type="submit">Submit</button>
+        </div>
+
+    </form>
+    
+
+  </ng-template>
+

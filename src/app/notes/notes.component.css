@@ -1,0 +1,41 @@
+textArea{
+    width: 100%;
+    height: 150px;
+}
+
+.mainDiv{
+    margin: 10px;
+}
+
+.notesDiv{
+    padding: 10px 20px;
+    border: 1px solid blue;
+}
+
+.sidebar{
+    background-color: var(--sidebar-bg-color, #faf0f0);
+    height: 1000px;
+}
+
+.display{
+    margin-top: 5%;
+    margin-left: 3%;
+}
+
+.rightBtn{
+    float: right;
+}
+
+.grayTxt{
+    color: var(--grayTxt-color, #b9b3b3);
+}
+
+.btnPos{
+    margin: 5px;
+}
+
+.search-hero {
+    max-width: 500px;
+    padding-bottom: 50px;
+    margin:auto;
+}
